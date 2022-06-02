@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('././models/User');
+const data = require('./data.js');
 const MONGO_URI = 'mongodb://localhost:27017/app';
 
 mongoose.connect(MONGO_URI)
@@ -16,33 +17,33 @@ mongoose.connect(MONGO_URI)
   //   });
   //   return myUser
   // })
-  .then((user) => {
-    // Iteration 2
-    console.log('Created: ', user)
-  })
-  .then((user) => {
-    // Iteration 3
-    return User.findOneAndUpdate({name: "Peter"}, {name: "Parker"}, {new: true})
-  })
-  .then((user) => {
-    // Iteration 3
-    console.log('Edited: ', user)
-  })
-  .then(() => {
-    // Iteration 4
-    // return ...
-  })
-  .then((users) => {
-    // Iteration 4
-    // console.log('Created: ', users)
-  })
+  // .then((user) => {
+  //   // Iteration 2
+  //   console.log('Created: ', user)
+  // })
+  // .then((user) => {
+  //   // Iteration 3
+  //   return User.findOneAndUpdate({name: "Peter"}, {name: "Parker"}, {new: true})
+  // })
+  // .then((user) => {
+  //   // Iteration 3
+  //   console.log('Edited: ', user)
+  // })
+  // .then(() => {
+  //   // Iteration 4
+  //   return User.insertMany(data);
+  // })
+  // .then((users) => {
+  //   // Iteration 4
+  //   console.log('Created: ', users)
+  // })
   .then(() => {
     // Iteration 5
-    // return ...
+    return User.findOneAndDelete({email:"pepe@gmail.com"})
   })
   .then((user) => {
     // Iteration 5
-    // console.log('Deleted: ', user)
+    console.log('Deleted: ', user)
   })
   .then(() => {
     mongoose.connection.close();
