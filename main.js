@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('./models/User');
+const User = require('././models/User');
 const MONGO_URI = 'mongodb://localhost:27017/app';
 
 mongoose.connect(MONGO_URI)
@@ -8,11 +8,17 @@ mongoose.connect(MONGO_URI)
   })
   .then(() => {
     // Iteration 2
-    User.create()
+    const myUser = User.create({
+      name:"Peter",
+      email:"peterParker@gmail.com",
+      age:25,
+      programmingLevel:"intermediate"
+    });
+    return myUser
   })
   .then((user) => {
     // Iteration 2
-    // console.log('Created: ', user)
+    console.log('Created: ', user)
   })
   .then(() => {
     // Iteration 3
